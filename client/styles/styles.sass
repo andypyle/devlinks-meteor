@@ -1,0 +1,557 @@
+@import mixins
+@import colors
+
+// [00]-BODY/HTML/GLOBALS
+*
+	box-sizing: border-box
+	outline: none !important
+
+html,
+body
+	height: 100%
+
+body
+	color: #000
+	min-height: 100%
+	font-family: 'Muli', 'Helvetica Neue', 'Verdana', sans-serif
+	-webkit-font-smoothing: antialiased
+    text-shadow: 1px 1px 1px rgba(0,0,0,0.004)
+
+a
+	text-decoration: none
+	color: inherit
+
+input
+	font-size: 1.1rem
+	padding: .5rem
+	box-shadow: 0
+	border: 0
+	outline: 0
+	border-radius: .15rem
+
+// [01]-MAIN/HEADER
+
+main
+	+flex(column)
+	min-height: 100%
+
+header
+	+flex(row)
+	justify-content: space-between
+	align-items: center
+	background-color: $color-primary-0
+	color: $white
+	padding: .5rem
+
+	+large
+		padding: 0 10%
+
+	.brand
+		a
+			position: relative
+			display: block
+			margin: 0
+			outline: 0
+			h1
+				margin: 0
+				padding: 0
+				outline: 0
+				line-height: 0
+				font-family: 'Hind', 'Helvetica Neue', 'Verdana', sans-serif
+				font-size: 2.15rem
+				font-weight: 700
+
+				+large
+					font-size: 2.75rem
+
+				.altColor
+					color: lighten($color-primary-1, 5%)
+
+	nav
+		+flex(row)
+		margin: 0
+		line-height: 0
+		padding: .5rem
+
+		.mobileNav
+			+large
+				display: none
+
+		.navContainer
+			+flex(column)
+			position: fixed
+			top:0
+			left:0
+			width: 75%
+			height: 100vh
+			background-color: transparentize(darken($color-primary-0, 40%), .1)
+			transform: translateX(-100%)
+			z-index: 1500
+			padding-top: .75rem
+
+			.navigation
+				+flex(column)
+				justify-content: center
+				align-items: center
+				width: 100%
+				padding: 0
+				li
+					+flex(row)
+					a
+						font-size: 1.75rem
+						font-weight: 300
+						line-height: 1.5
+						padding: .5rem
+
+			.user
+				+flex(column)
+				justify-content: center
+				align-items: center
+				margin: 0
+				padding: 0 1rem 2rem 1rem
+				width: 100%
+
+				order: -1
+				border-bottom: 1px dashed transparentize($lt-grey, .85)
+				
+
+				+large
+					justify-content: space-around
+					margin-left: 1.5rem
+					padding-left: 2rem
+					border: 0
+					border-left: 2px solid transparentize($lt-grey, .75)
+
+				.userImg
+					+flex(column)
+					justify-content: center
+					flex-grow: 0
+					margin-bottom: .75rem
+					img
+						width: 70px
+						height: auto
+						border-radius: 50%
+
+				.userInfo
+					
+					+flex(column)
+					justify-content: center
+					align-items: center
+					line-height: 1.5
+
+					+medium
+						margin-left: 1rem
+
+					span
+						font-size: 1.15rem
+						font-weight: 300
+						margin-bottom: .45rem
+						margin-top: -.25rem
+
+				a
+					padding: .25rem
+					font-size: 1.2rem
+					font-weight: 300
+					letter-spacing: 1px					
+					width: 100%
+					text-align: center
+					+ghostBtn
+
+			+large
+				position: static
+				background: transparent
+				transform: none
+				padding: .5rem
+				width: auto
+				height: auto
+
+
+				.navigation
+					+flex(row)
+					width: auto
+					margin: 0
+					li
+						a
+							font-size: 1.5rem
+							line-height: 0
+
+				.user
+					+flex(row)
+					order: 2
+					padding: 0 0 0 2rem
+
+					.userImg
+						margin: 0
+						img
+							width: 60px
+
+					a
+						font-size: 1rem
+
+
+// [02]-SECTIONS
+section#content
+	flex: 1
+	width: 100%
+	margin: 0 auto
+	height: 100%
+	min-height: 100%
+
+	.loading
+		+flex(row)
+		justify-content: center
+		align-items: center
+		position: absolute
+		top: 0
+		left: 0
+		right: 0
+		height: 100%
+		z-index: -1001
+		color: $color-secondary-2-3
+		i
+			color: inherit
+
+.userSignIn
+	+flex(column)
+	justify-content: center
+	align-items: center
+	margin-top: 2rem
+	
+	color: $color-primary-0
+	h2
+		font-size: 2rem
+		font-weight: 300
+		line-height: 1.5
+		color: $color-primary-0
+		margin: 0
+		padding: .75
+		text-align: center
+
+	.userSignInButtons
+		+flex(row)
+		color: desaturate(darken($color-primary-0, 10%), 40%)
+		a
+			padding: .5rem 1rem
+			+transition(200ms)
+
+			&:hover
+				color: desaturate(darken($color-primary-0, 2%), 40%)
+				+transition(200ms)
+
+
+
+// [03]-LINK LIST
+.linksHead
+	+flex(row)
+	justify-content: space-around
+	flex-wrap: nowrap
+	align-items: center
+	background-color: $color-primary-2
+	padding: .75rem
+	margin: 0 auto
+	color: $white
+	width: 100%
+
+	+medium
+		width: 80%
+
+	+large
+		width: 80%
+
+	.linkSearch
+		+flex(row)
+		flex-wrap: nowrap
+		flex-basis: 75%
+		align-items: baseline
+
+	.linkPost
+		+flex(row)
+		flex-basis: 25%
+		align-items: center
+		justify-content: flex-end
+
+	input
+		margin:0
+		width: 75%
+
+	button
+		color: $white
+		border-radius: .15rem
+		padding: .6rem .8rem
+		margin: 0
+		border: 0
+		box-shadow: 0
+		width: 20%
+		line-height: 0
+		+greenBtn
+
+	a
+		display: inline-block
+		padding: .5rem .8rem
+		margin: 0
+		font-size: .95rem
+		font-weight: 300
+		+blueBtn
+
+.formContainer
+	+flex(column)
+	width: 100%
+	padding: 1rem
+	margin: 0 auto
+
+	+medium
+		width: 80%
+
+	+large
+		width: 60%
+
+.linksList
+	+flex(column)
+	width: 100%
+	margin: 0 auto
+
+	+medium
+		width: 80%
+		margin-top: 1rem
+
+	+large
+		width: 60%
+		margin-top: 1rem
+
+	article.link
+		+flex(column)
+		padding: 0
+		margin-top: 1rem
+		
+		
+		
+		align-items: flex-start
+		color: #555
+
+		position: relative
+		z-index: 0
+
+		.linkVote
+			+flex(column)
+			align-items: center
+			justify-content: center
+			padding-right: .75rem
+			padding-top: .5rem
+
+			a:first-of-type
+				margin-bottom: .75rem
+
+		.linkContent
+			+flex(column)
+			flex: 1
+			width: 100%
+			border-radius: .25rem
+			background-color: lighten($color-secondary-2-0, 40%)
+			padding: .5rem
+			box-shadow: 2px 2px 0px lighten($color-secondary-2-2, 15%)
+
+			.linkHeader
+				+flex(row)
+				justify-content: space-between
+				align-items: flex-start
+				width: 100%
+				h2
+					margin: 0
+					line-height: 1.5
+				span
+					font-size: .85rem
+					color: #AAA !important
+
+			.linkTags
+				+flex(row)
+				justify-content: flex-end
+				flex-flow: wrap
+				width: 100%
+				margin-top: .5rem
+				a
+					font-size: .7rem
+					font-weight: 300
+					background-color: lighten($color-primary-0, 10%)
+					color: $white
+					margin: .25rem
+					padding: .25rem
+					border-radius: .25rem
+					opacity: .6
+
+					+transition(200ms)
+
+					&:hover
+						opacity: 1
+					&:last-of-type
+						margin-right: 0
+
+		.linkEditDelete
+			+flex(row)
+			align-items: center
+			justify-content: space-around
+			width: 100%
+			font-size: .75rem
+			padding: .75rem
+			background-color: lighten($lt-grey, 2%)
+			border: none
+			
+			box-shadow: 2px 2px 0px transparentize(darken($lt-grey, 10%), .4)
+			border-radius: 0 .25rem .25rem 0
+			z-index: -1000
+
+			a
+				+flex(row)
+				justify-content: space-around
+				padding: .25rem 1rem
+				width: 100%
+				align-items: center
+				color: #777
+
+				+transition(140ms)
+
+				i
+					width: 30%
+					text-align: right
+					padding-right: .5rem
+
+				span
+					width: 70%
+					text-align: left
+
+				&:hover
+					color: #333
+
+		&:first-of-type
+			margin-top: 0
+
+		&:last-of-type
+			margin-bottom: 1rem
+
+.loadMoreBtn
+	+flex(row)
+	width: 100%
+	justify-content: center
+	align-items: center
+	a
+		padding: .75rem 1.25rem
+		font-size: 1.25rem
+		font-weight: 300
+		color: $lt-grey
+		background-color: $color-secondary-1-2
+		box-shadow: 2px 2px 0px transparentize($color-secondary-1-3, .65)
+		border-radius: .25rem
+		text-align: center
+		+transition(180ms)
+
+		&:hover
+			color: $white
+			background-color: lighten($color-secondary-1-2, 3%)
+			transform: translate(-1px, -2px) scale(1.02)
+			box-shadow: 4px 4px 1px transparentize($color-secondary-1-3, .9)
+			+transition(180ms)
+
+
+// [0#]-FORMS
+.formContainer
+	+flex(column)
+	margin-top: 1rem
+	form
+		+flex(column)
+		width: 100%
+		.linkFormUrl,
+		.linkFormTitle,
+		.linkFormTags,
+		.linkFormSubmit,
+			+flex(column)
+			padding: .5rem 0
+
+			&:first-child
+				padding-top: 0
+			input
+				font-size: 1.1rem
+				padding: .5rem
+				box-shadow: 0
+				border: 0
+				border-radius: .15rem
+				border: 1px solid #DFDFDF
+				background-color: lighten(#EFEFEF, 2%)
+				&[name='linkTags']
+					text-align: right
+
+
+			label
+				font-size: .75rem
+				order: -1
+				//display: none
+
+			button
+				width: 25%
+				align-self: flex-end
+				border: 0
+				outline: 0
+				border-radius: .15rem
+				padding: .6rem .75rem
+				font-size: 1.05rem
+				+blueBtn
+
+
+
+			.linkFormTagsPreview
+				+flex(row)
+				justify-content: flex-end
+				flex-flow: wrap
+				width: 100%
+				margin-top: .5rem
+				span
+					font-size: .85rem
+					font-weight: 300
+					background-color: $lt-grey
+					border-radius: .15rem
+					color: #AAA
+					margin: .5rem
+					padding: .5rem
+					&:last-of-type
+						margin-right: 0
+
+
+
+
+// [0#]-FOOTER
+footer
+	+flex(row)
+	background-color: $color-primary-0
+	color: $white
+	justify-content: center
+	align-items: center
+	margin-top: 1rem
+	span
+		padding: 1.5rem
+
+// [0#]-TOGGLECLASS
+
+.error
+	color: $red
+	font-size: .9rem
+	+transition(200ms)
+
+.notFound
+	color: $red
+	margin-top: 1.75rem
+	width: 100%
+	h2
+		font-size: 1.75rem
+		color: inherit
+		text-align: center
+
+.reported
+	opacity: .4
+	pointer-events: none
+	&:hover
+		cursor: pointer
+
+.notOwner
+	justify-content: flex-end !important
+	a
+		width: auto !important
+		justify-content: flex-end
+		align-items: flex-end

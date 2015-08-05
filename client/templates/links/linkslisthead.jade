@@ -1,0 +1,11 @@
+template(name='linksListHead')
+	section.linksHead
+		.linkSearch
+			form#searchForm
+				input.linkQuery(type='text', name='linkSearch', placeholder='Search')
+				button(type='submit')
+					i.fa.fa-search
+		if currentUser
+			.linkPost
+				a(href='{{pathFor "linkPost"}}') Post
+					i.fa.fa-plus

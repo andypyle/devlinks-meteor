@@ -1,0 +1,10 @@
+template(name='linksList')
+	+linksListHead
+	section.linksList
+		each linksList
+			article.link
+				+link
+
+	if morePosts
+		.loadMoreBtn
+			a.loadMore(href='#') Load More...

@@ -1,0 +1,15 @@
+template(name='loginState')
+	if currentUser
+		.user
+			.userImg
+				+userAvatar
+			.userInfo
+				if currentUser.profile
+					span {{currentUser.profile.name}}
+				if currentUser.services.google
+					span {{currentUser.services.google.name}}
+				a.logOutBtn(href='#') Logout
+	else
+		.user
+			.userInfo
+				a(href='{{pathFor "signin"}}') Login

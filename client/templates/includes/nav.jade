@@ -1,0 +1,14 @@
+template(name='nav')
+	nav
+		.mobileNav
+			a.toggleNav(href='#')
+				i.fa.fa-bars.fa-2x
+
+		.navContainer
+			ul.navigation
+				li
+					a(href='{{pathFor "home"}}') Home
+				li
+					a(href='{{pathFor "about"}}') About
+
+				+loginState

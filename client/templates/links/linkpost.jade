@@ -1,0 +1,28 @@
+template(name='linkPost')
+	+linksListHead
+	.formContainer
+		form#linkPost
+			.linkFormUrl
+				input(type='url', name='linkUrl', placeholder='http://')
+				if urlExists
+					label.error(for='linkUrl') URL Exists!
+				if urlLength.required
+					label.error(for='linkUrl') Required!
+				if urlLength.max
+					label.error(for='linkUrl') Max length!
+			.linkFormTitle
+				input(type='text', name='linkTitle', placeholder='Title')
+				if titleLength.required
+					label.error(for='linkTitle') Required!
+				if titleLength.max
+					label.error(for='linkTitle') Max length!
+			.linkFormTags
+				input(type='tags', name='linkTags', placeholder='Tags (Separated by commas)')
+				.linkFormTagsPreview
+					each getTags
+						span {{this}}
+			.linkFormSubmit
+				button(type='submit', disabled=formDisabled)
+					| Submit
+		if postSuccess
+			p Great success, much wow. Very redirect.

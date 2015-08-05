@@ -1,0 +1,84 @@
+=flex($direction)
+	display: flex
+	flex-direction: $direction
+
+=transition($duration)
+	transition: all $duration ease-in-out
+
+=greenBtn()
+	color: $lt-grey
+	background-color: darken($color-secondary-2-0, 6%)
+	box-shadow: 2px 2px 0px transparentize($color-secondary-2-4, .85)
+	border-radius: .25rem
+	+transition(150ms)
+
+	&:hover
+		color: $white
+		background-color: lighten($color-secondary-2-3, 15%)
+		transform: translate(-1px, -2px) scale(1.02)
+		box-shadow: 2px 2px 3px transparentize($color-secondary-2-4, .5)
+		+transition(150ms)
+
+	&:disabled
+		opacity: .4
+		&:hover
+			color: $lt-grey
+			background-color: darken($color-secondary-2-0, 6%)
+			transform: none
+			box-shadow: 2px 2px 0px transparentize($color-secondary-2-4, .85)
+
+
+=blueBtn()
+	color: $lt-grey
+	background-color: lighten($color-primary-4, 22%)
+	box-shadow: 2px 2px 0px transparentize($color-primary-4, .85)
+	border-radius: .25rem
+	+transition(150ms)
+
+	&:hover
+		color: $white
+		background-color: lighten($color-primary-4, 26%)
+		transform: translate(-1px, -2px) scale(1.02)
+		box-shadow: 2px 2px 3px transparentize(darken($color-primary-4, 10%), .7)
+		+transition(150ms)
+
+	&:disabled
+		opacity: .4
+		&:hover
+			color: $lt-grey
+			background-color: lighten($color-primary-4, 22%)
+			transform: none
+			box-shadow: 2px 2px 0px transparentize($color-primary-4, .85)
+
+
+=ghostBtn()
+	color: $lt-grey
+	background: transparent
+	box-shadow: none
+	border-radius: .25rem
+	border: 2px solid $lt-grey
+	opacity: .9
+	+transition(150ms)
+
+	&:hover
+		color: $white
+		border-color: $white
+		opacity: 1
+		+transition(150ms)
+
+
+$medium 	: 	700px
+$large 		:	1000px
+$xlarge 	: 	1200px
+
+=medium
+	@media only screen and (min-width: #{$medium})
+		@content
+
+=large
+	@media only screen and (min-width: #{$large})
+		@content
+
+=xlarge
+	@media only screen and (min-width: #{$xlarge})
+		@content

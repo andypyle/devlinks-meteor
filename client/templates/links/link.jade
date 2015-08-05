@@ -1,0 +1,30 @@
+template(name='link')
+	.linkContent
+		.linkHeader
+			a(href=url, target='_BLANK')
+				h2 {{title}}
+				span {{url}}
+				
+			if currentUser
+				.linkEditToggle
+					a.toggleEdit(href='#')
+						i.fa.fa-ellipsis-h.fa-lg
+
+		.linkTags
+			each tags
+				a.tag(href='/search/{{this}}')=this
+
+	.linkEditDelete(class='{{#if ownsLink}}{{else}}notOwner{{/if}}')
+		if ownsLink
+			a.linkEdit(href='{{ pathFor "linkEdit" }}')
+				i.fa.fa-edit
+				span edit
+			a.linkDelete(href='#')
+				i.fa.fa-trash
+				span delete
+		a.linkReport(href='#', class="{{#if reported}}reported{{else}}{{/if}}")
+			i.fa.fa-flag
+			if reported
+				span reported
+			else
+				span report

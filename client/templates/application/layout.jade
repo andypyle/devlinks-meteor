@@ -1,0 +1,14 @@
+template(name='layout')
+	main
+		header
+			.brand
+				a(href='{{pathFor "home"}}')
+					h1 dev<span class='altColor'>|Links</span>
+
+			+nav
+
+		section#content
+			+yield
+
+		footer
+			span Created by Andy Pyle. &copy;2015

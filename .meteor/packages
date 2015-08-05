@@ -1,0 +1,24 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+meteor-platform
+mquandalle:jade
+aldeed:collection2
+momentjs:moment
+iron:router
+useraccounts:core
+fourseven:scss
+mrt:normalize.css
+fortawesome:fontawesome
+useraccounts:unstyled
+accounts-ui
+service-configuration
+accounts-github
+http
+reactive-var
+percolate:velocityjs
+accounts-google
+houston:admin

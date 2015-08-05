@@ -1,0 +1,5 @@
+template(name='userAvatar')
+	if currentUser.profile.avatar_url
+		img(src=currentUser.profile.avatar_url)
+	if currentUser.services.google
+		img(src=currentUser.services.google.picture)
